@@ -1,50 +1,89 @@
-<form id="uploadForm" enctype="multipart/form-data">
-    <input type="file" name="photo" id="photoInput">
-    <button type="submit">Upload</button>
-  </form>
-  
-  <script>
-
-  function readyUpload(){
-
-    const obj = {
-      "photo" : document.getElementById('photoInput').files[0],
-      "name":"Aman Rao",
-      "rollNo" : 22124019,
-      "email" : "amant.it.22@nitj.ac.in",
-      "gender" : "M",
-      "password": "4444",
-      "branch" : "IT",
-      "crush" : "Shreya",
-      "instagram_username":"integralbaji"
-    }
-    
-    const formData = new FormData();
-
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        formData.append(key, obj[key]);
-      }
-    }
-
-    return formData;
+<style>
+  body{
+    font-size: 1rem;
   }
-  document.getElementById('uploadForm').addEventListener('submit', async (event) => {
-    event.preventDefault();
+  input{
+    margin: 0.2rem;
+    padding: 0.2rem;
+    font-size: 1rem;
+  }
+  </style>
+<form id="uploadForm" enctype="multipart/form-data">
+  <div>
+    Photo : <input type="file" name="photo" id="photo">
+  </div>
+  <div>
+    Name : <input type="text" name="name" id="name">
+  </div>
+  <div>
+    Roll No : <input type="text" name="rollNo" id="rollNo">
+  </div>
+  <div>
+    Email : <input type="text" name="email" id="email">
+  </div>
+  <div>
+    Gender : <input type="text" name="gender" id="gender">
+  </div>
+  <div>
+    Password : <input type="password" name="password" id="password">
+  </div>
+  <div>
+    Branch : 
+    <input type="text" name="branch" id="branch">
+  </div>
+  <div>
+    Crush : <input type="text" name="crush" id="crush">
+  </div>
+  <div>
+    Instagram Username : <input type="text" name="instagram_username" id="instagram_username">
+  </div>
+  <br>
+  <br>
+  <button type="submit">Upload</button>
+</form>
+  
+<script>
 
-    const formData = await readyUpload();
+function readyUpload(){
 
-    try {
-      const response = await fetch('http://127.0.0.1:8888/users/signup', {
-        method: 'POST',
-        body: formData,
-      });
+  const obj = {
+    "photo" : document.getElementById('photo').files[0],
+    "name": document.getElementById('name').value,
+    "rollNo" : document.getElementById('rollNo').value,
+    "email" : document.getElementById('email').value,
+    "gender" : document.getElementById('gender').value,
+    "password": document.getElementById('password').value,
+    "branch" : document.getElementById('branch').value,
+    "crush" : document.getElementById('crush').value,
+    "instagram_username": document.getElementById('instagram_username').value
+  }
+  
+  const formData = new FormData();
 
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.error('Error:', error);
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      formData.append(key, obj[key]);
     }
-  });
-  </script>
+  }
+
+  return formData;
+}
+document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const formData = await readyUpload();
+
+  try {
+    const response = await fetch('http://34.93.140.88:8888/users/signup', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+});
+</script>
   

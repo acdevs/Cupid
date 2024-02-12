@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
     instagram_username : {
         type: String,
     },
-    facebook_username : {
+    snapchat_username : {
         type: String,
     },
     linkedin_username : {

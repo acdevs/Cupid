@@ -35,17 +35,19 @@ const user_match_get = async (req, res) => {
     }
 
     // if match already exists
-    const match = await Match.findOne({ $or : [{ user1: req.userID}, { user2: req.userID}]})
-    if(match) {
-        if(match.user1 === req.userID) {
-            const matched = await User.findOne({ _id: match.user2})
-            res.status(200).json(matched)
-            return
-        }
-        const matched = await User.findOne({ _id: match.user1})
+    const match1 = await Match.findOne({ user1: req.userID})
+    if(match1) {
+        const matched = await User.findOne({ _id: match1.user2})
         res.status(200).json(matched)
         return
     }
+    const match2 = await Match.findOne({ user2: req.userID})
+    if(match2) {
+        const matched = await User.findOne({ _id: match2.user1})
+        res.status(200).json(matched)
+        return
+    }
+
 
     // if match does not exist, find a match
     try {
@@ -191,6 +193,11 @@ const user_match_get = async (req, res) => {
                 return !match;
             });
 
+            if(matchables.length === 0) {
+                res.status(400).json({ message: "No match found yet."})
+                return
+            }
+
             const randomIndex = Math.floor(Math.random() * matchables.length);
             const match = new Match({
                 user1: user._id,
@@ -219,7 +226,7 @@ const user_match_get = async (req, res) => {
             });
 
             if(crush) {
-                if(user.popularity >= crush.popularity) {
+                if(user.popularity >= crush.popularity || !crush.crush) {
                     const match = new Match({
                         user1: user._id,
                         user2: crush._id
@@ -240,6 +247,11 @@ const user_match_get = async (req, res) => {
                 const match = await Match.findOne({ $or : [{ user1: user._id}, { user2: user._id}]});
                 return !match;
             });
+
+            if (matchables.length == 0) {
+                res.status(400).json({ message: "No match found yet."})
+                return
+            }
 
             const randomIndex = Math.floor(Math.random() * matchables.length);
             const match = new Match({
