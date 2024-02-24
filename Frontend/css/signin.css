@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'El Messiri', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'El Messiri', sans-serif;
 }
 
 body {
@@ -23,14 +15,17 @@ body {
   width: 32px;
 }
 
+
 section {
-  display: flex;
-  justify-content: center;
+  
   align-items: center;
   min-height: 100vh;
+  min-width: 100vw;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes gradient {
@@ -80,7 +75,7 @@ section {
     width: 150px;
     height: 150px;
     top: 105px;
-    left: -180px;
+    left: -125px;
     z-index: 2;
   }
   
@@ -89,7 +84,7 @@ section {
     height: 60px;
     bottom: 85px;
     right: -45px;
-    z-index: 0;
+    z-index: 2;
   }
   
   .square:nth-child(4) {
@@ -117,15 +112,15 @@ section {
 
 .container {
   position: relative;
-  padding: 20px;
-  width: 400px;
-  min-height: 380px;
+  padding: 50px;
+  width: 20vw;
+  min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
 }
 
@@ -153,11 +148,10 @@ section {
     margin-bottom: 30px;
   }
 
-
   .inputBx {
     position: relative;
     width: 100%;
-    margin: 0 10px 20px 10px;
+    margin-bottom: 20px;
     
     input {
       width: 80%;
@@ -171,6 +165,11 @@ section {
       color: #fff;
       font-size: 16px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .imputBt {
+        margin: auto;
+
     }
     
     .password-control {
@@ -197,7 +196,7 @@ section {
       left: 13px;
     }
     
-    input[type="submit"] {
+    .ipbtn {
       background: #fff;
       color: #111;
       max-width: 100px;
@@ -206,15 +205,20 @@ section {
       letter-spacing: 1px;
       cursor: pointer;
       transition: 1.5s;
+      margin-left:30%;
     }
     
-    /* input[type="submit"]:hover {
+    .ipbtn:hover {
       background: linear-gradient(115deg, 
         rgba(0,0,0,0.10), 
         rgba(255,255,255,0.25));
       color: #fff;
       transition: .5s;
-    } */
+    } 
+    
+    
+   
+
     
     input::placeholder {
       color: #fff;
@@ -247,94 +251,53 @@ section {
     }
     
     a:hover {
-      background-color: #000;
-      background-image: linear-gradient(to right, #434343 0%, black 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #000;
     }
   }
 }
+
+.home {
+  background: #fff;
+  color: #111;
+  padding: 8px 10px;
+  box-shadow: none;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 1.5s;
+  margin-left:40%;
+  border-radius: 8px;
+}
+
+.home:hover {
+  background: linear-gradient(115deg, 
+    rgba(0,0,0,0.10), 
+    rgba(255,255,255,0.25));
+  color: #fff;
+  transition: .5s;
+} 
 
 .remember {
   position: relative;
   display: inline-block;
   color: #fff;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
-    </style>
-</head>
-<body>
-    <section>
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 60vw;
+  }
   
-        <div class="box">
-          
-          <div class="square" style="--i:0;"></div>
-          <div class="square" style="--i:1;"></div>
-          <div class="square" style="--i:2;"></div>
-          <div class="square" style="--i:3;"></div>
-          <div class="square" style="--i:4;"></div>
-          <div class="square" style="--i:5;"></div>
-          
-         <div class="container"> 
-          <div class="form"> 
-            <h2>LOGIN to CodePen</h2>
-            <form action="">
-              <div class="inputBx">
-                <input type="text" required="required">
-                <span>Roll No.</span>
-                <i class="fas fa-user-circle"></i>
-              </div>
-              <div class="inputBx">
-                <input type="email" required="required">
-                <span>NITJ Email</span>
-              </div>
-              <div class="inputBx">
-                <input type="text" required="required">
-                <span>Branch</span>
-              </div>
-              <div class="inputBx">
-                <input type="text">
-                <span>Crush Name</span>
-              </div>
-              <div class="inputBx">
-                <input type="number" required="required">
-                <span>Crush Roll No.</span>
-              </div>
-              <div class="inputBx password">
-                <input id="password-input" type="password" name="password" required="required">
-                <span>Enter New Password</span>
-                <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
-                <i class="fas fa-key"></i>
-              </div>
-              <!-- <label class="remember"><input type="checkbox">
-                Remember</label> -->
-              <div class="inputBx" style="margin-left: 35px;">
-                <input type="button" value="Register" disabled> 
-              </div>
-            </form>
-            <!-- <p>Forgot password? <a href="#">Click Here</a></p> -->
-            <p>Already have an account?  <a href="/signin.html">  Sign In</a></p>
-          </div>
-        </div>
-          
-        </div>
-      </section>
+}
 
-      <script>
-        function show_hide_password(target){
-        var input = document.getElementById('password-input');
-        if (input.getAttribute('type') == 'password') {
-            target.classList.add('view');
-            input.setAttribute('type', 'text');
-        } else {
-            target.classList.remove('view');
-            input.setAttribute('type', 'password');
-        }
-        return false;
-    }
-    </script>
-      
-</body>
-
-</html>
+@media screen and (max-width: 320px) {
+  section {
+    width: 100vw;
+    height: 100vh;
+  }
+  .container {
+    width: 80vw;
+  }
+  
+}

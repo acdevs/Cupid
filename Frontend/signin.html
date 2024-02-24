@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="icon_path" type="image/x-icon">
+    <link rel="stylesheet" href="css\signin.css">
+</head>
+<body>
+    <section class="hero">
+  
+        <div class="box">
+          
+          <div class="square" style="--i:0;"></div>
+          <div class="square" style="--i:1;"></div>
+          <div class="square" style="--i:2;"></div>
+          <div class="square" style="--i:3;"></div>
+          <div class="square" style="--i:4;"></div>
+          <div class="square" style="--i:5;"></div>
+          
+         <div class="container"> 
+          <div class="form"> 
+            <center><h2>Login</h2></center> 
+            <form action="">
+              <div class="inputBx">
+                <input type="number" required="required">
+                <span>Roll No.</span>
+                <i class="fas fa-user-circle"></i>
+              </div>
+              <div class="inputBx password">
+                <input id="password-input" type="password" name="password" required="required">
+                <span>Password</span>
+                <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+                <i class="fas fa-key"></i>
+              </div>
+              <label class="remember"><input type="checkbox">
+                Remember</label>
+              <div class="inputBx">
+            <a href="my_account.html">  <input class="ipbtn" type="submit" value="Log in" ></a>   
+               
+              </div>
+            </form>
+            <p>Don't have an account <a href="signup.html">Sign Up</a></p>
+            <a href="index.html"><button class="home" type="button" >Home</button></a>
+          </div>
+        </div>
+          
+        </div>
+      </section>
+
+      <script>
+        function show_hide_password(target){
+        var input = document.getElementById('password-input');
+        if (input.getAttribute('type') == 'password') {
+            target.classList.add('view');
+            input.setAttribute('type', 'text');
+        } else {
+            target.classList.remove('view');
+            input.setAttribute('type', 'password');
+        }
+        return false;
+    }
+    </script>
+    	<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+    
+      <script src="js\form_script.js"></script>
+      
+</body>
+
+</html>

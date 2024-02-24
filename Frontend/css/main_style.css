@@ -155,13 +155,13 @@ nav .close:hover div::after{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url('images/back.jpg');
+  background-image: url('images\back.jpg');
   align-items: center;
   justify-content: center;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: 1;
+  z-index: 2;
 }
 
 .container h1{

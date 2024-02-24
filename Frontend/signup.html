@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="css\signup.css">
+  
+</head>
+<body>
+    <section>
+  
+        <div class="box">
+          
+          <div class="square" style="--i:0;"></div>
+          <div class="square" style="--i:1;"></div>
+          <div class="square" style="--i:2;"></div>
+          <div class="square" style="--i:3;"></div>
+          <div class="square" style="--i:4;"></div>
+          <div class="square" style="--i:5;"></div>
+          
+         <div class="container"> 
+          <div class="form"> 
+           <center><h2>Sign Up</h2></center> 
+            <form action="">
+              <div class="inputBx">
+                <input type="text" required="required">
+                <span>Roll No.</span>
+                <i class="fas fa-user-circle"></i>
+              </div>
+              <div class="inputBx">
+                <input type="email" required="required">
+                <span>NITJ Email</span>
+              </div>
+              <div class="inputBx">
+                <input type="text" required="required">
+                <span>Branch</span>
+              </div>
+              <div class="inputBx">
+                <input type="text">
+                <span>Crush Name</span>
+              </div>
+              <div class="inputBx">
+                <input type="number" required="required">
+                <span>Crush Roll No.</span>
+              </div>
+              <div class="inputBx password">
+                <input id="password-input" type="password" name="password" required="required">
+                <span>Enter New Password</span>
+                <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+                <i class="fas fa-key"></i>
+              </div>
+              <div class="inputBx" style="margin-left: 35px;">
+                <input type="submit" value="Register"> 
+              </div>
+            </form>
+            <p>Already have an account?  <a href="signin.html">  Sign In</a></p>
+            <a href="index.html"><button class="home" type="button" >Home</button></a>
+          </div>
+        </div>
+          
+        </div>
+      </section>
+
+      <script>
+        function show_hide_password(target){
+        var input = document.getElementById('password-input');
+        if (input.getAttribute('type') == 'password') {
+            target.classList.add('view');
+            input.setAttribute('type', 'text');
+        } else {
+            target.classList.remove('view');
+            input.setAttribute('type', 'password');
+        }
+        return false;
+    }
+    </script>
+      
+</body>
+
+</html>
