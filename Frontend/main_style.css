@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Rochester&display=swap");
+:root{
+	--primary: #fa0269;
+	--secondary: #fff;
+
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -62,10 +68,10 @@ nav ul li{
 }
 
 nav ul li a{
-	color: #fafafa;
+	color: #290122;
 	font-size: 2em;
 	text-decoration: none;
-	font-weight: 500;
+	font-weight: 700;
 	position: relative;
 	opacity: 0;
 	pointer-events: none;
@@ -142,8 +148,8 @@ nav .close:hover div::after{
   }
 }
 
+/*hero*/
 .container {
-  color:#978e10;
   text-align: center;
   width: 100%;
   min-height: 100vh;
@@ -164,7 +170,6 @@ nav .close:hover div::after{
 	left: 5%;
 	pointer-events: none;
 	color: #da1466b2;
-	font-size: 2em;
 	z-index: 2;
 	font-family: "Rochester", cursive;
 	font-weight: 700;
@@ -196,25 +201,44 @@ p {
 }
 
  a {
+	margin-top: 5%;
   display: inline-block;
   background-color: #4240408c;
-  color: #fff;
+  color: #d30b79d2;
   padding: 0.7rem 2rem;
   text-decoration: none;
   font-weight: 700;
   border-radius: 0.7rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-  font-size: 0.9rem;
+  background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 7.5px );
+-webkit-backdrop-filter: blur( 7.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+  font-size: 1.5rem;
   transition: all 0.3s ease;
+  z-index: 2;
+  font-family: "Rochester", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.8rem;
 }
 
-a:hover {
-  background-color: #222;
+ a:hover {
+	background: rgba(255, 255, 255, 0.075);
+	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+	backdrop-filter: blur( 7.5px );
+	-webkit-backdrop-filter: blur( 7.5px );
+	border-radius: 10px;
+	border: 1px solid rgba( 255, 255, 255, 0.18 );
+	color: #fa0269;
+	cursor: pointer;
+
 }
 
 
 /* button */
-.container a {
+.nav a {
 	position:relative;
 	padding: 10px 20px;
 	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
