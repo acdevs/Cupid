@@ -155,7 +155,7 @@ nav .close:hover div::after{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url('images\back.jpg');
+  background-image: url('/images/back.jpg');
   align-items: center;
   justify-content: center;
   background-position: center;
