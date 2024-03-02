@@ -34,8 +34,8 @@ const userSchema = new mongoose.Schema({
     crush : {
         type: String,
     },
-    crush_branch : {
-        type: String,
+    crush_rollNo : {
+        type: Number,
     },
     popularity : {
         type: Number,

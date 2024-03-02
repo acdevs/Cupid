@@ -17,18 +17,18 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
         console.log('Connected & Server is running on ' + process.env.PORT + '...');
     })
 
-    cron.schedule('* * * * *', () => {
-        axios.patch('http://127.0.0.1:8888/users/match_popularity')
-            .then(res => {
-                console.log(res.data.message);
-            })
-            .catch(err => {
-                console.error(err.message);
-            });
-    }, {
-        scheduled: true,
-        timezone: 'Asia/Kolkata'
-    });
+    // cron.schedule('* * * * *', () => {
+    //     axios.patch('http://127.0.0.1:8888/users/match_popularity')
+    //         .then(res => {
+    //             console.log(res.data.message);
+    //         })
+    //         .catch(err => {
+    //             console.error(err.message);
+    //         });
+    // }, {
+    //     scheduled: true,
+    //     timezone: 'Asia/Kolkata'
+    // });
 })
 .catch((err) => {
     console.log(err);
@@ -44,7 +44,7 @@ app.use(morgan("dev"))
 /*  -> static files */
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: true })) // parse url-encoded data
-app.use(express.json())
+app.use(express.json()) 
 
 /* routes */
 app.get("/", (req, res) => {

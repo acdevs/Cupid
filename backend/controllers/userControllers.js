@@ -29,22 +29,24 @@ const user_match_get = async (req, res) => {
     }
 
     const today = new Date();
-    if(today < new Date("2024-02-09 00:00:00")) {
-        res.status(400).json({ message: "Match making not started yet" })
+    if(today < new Date("2024-03-01 00:00:00")) {
+        res.status(400).json({ message: "Time Out" })
         return
     }
 
     // if match already exists
     const match = await Match.findOne({ $or : [{ user1: req.userID}, { user2: req.userID}]})
     if(match) {
-        if(match.user1 === req.userID) {
+        if(match.user1 == req.userID) {
             const matched = await User.findOne({ _id: match.user2})
             res.status(200).json(matched)
             return
         }
-        const matched = await User.findOne({ _id: match.user1})
-        res.status(200).json(matched)
-        return
+        if(match.user2 == req.userID){
+            const matched = await User.findOne({ _id: match.user1})
+            res.status(200).json(matched)
+            return
+        }
     }
 
     // if match does not exist, find a match
