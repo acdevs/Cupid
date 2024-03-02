@@ -117,7 +117,7 @@ section {
 .container {
   position: relative;
   padding: 30px;
-  width: 380px;
+  width: 30vw;
   min-height: 60vh;
   display: flex;
   justify-content: center;
@@ -316,4 +316,23 @@ a:hover {
   margin: 8px 0;
   padding: 8px 10px;
   border-radius: 99px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .square{
+    display: none;
+  }
+
+  .container{
+    min-width:70vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .square{
+    display: none;
+  }
+
+  .container{
+    min-width:90vw;
+  }
 }

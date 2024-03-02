@@ -15,7 +15,7 @@
         </div>
     
         <div class="profile-card__cnt js-profile-cnt">
-          <div class="profile-card__name" id="user-name"></div>
+          <div class="profile-card__name" id="user-name">Name</div>
           <div class="profile-card__txt">Roll No
             <span id="user-rollNo"><strong>Roll No</strong></span>
           </div>
@@ -26,7 +26,7 @@
             <span id="user-email"><strong>Email</strong></span>
           </div>
           <div class="profile-card__txt">Gender
-            <span id="user-gender"><strong>Email</strong></span>
+            <span id="user-gender"><strong>M/F</strong></span>
           </div>
           
           <div class="profile-card__txt">Instagram
@@ -34,17 +34,41 @@
           </div>
 
           <div class="profile-card-inf match-info">
+           
+            <div class="crush-profile-card__img">
+              <img src="" alt="crush-profile card" id="crush-photo">
+            </div>
+            <div class="crush-details">
+              <div class="profile-card__name" id="user-name">Name</div>
+              <div class="profile-card__txt">Roll No
+                <span id="user-rollNo"><strong>Roll No</strong></span>
+              </div>
+              <div class="profile-card__txt">Branch
+                <span id="user-branch"><strong>Branch</strong></span>
+              </div>
+              <div class="profile-card__txt">Email
+                <span id="user-email"><strong>Email</strong></span>
+              </div>
+              <div class="profile-card__txt">Gender
+                <span id="user-gender"><strong>M/F</strong></span>
+              </div>
+              
+              <div class="profile-card__txt">Instagram
+                <span id="user-instagram"><strong>Instagram</strong></span>
+              </div>
+          
+            </div>
           </div>
     
           <div class="profile-card-ctr">
-            <button class="profile-card__button button--blue js-message-btn">Connect</button>
+            <!-- <button class="profile-card__button button--blue js-message-btn">Connect</button> -->
             <button class="profile-card__button button--orange" onclick="redirectToPage()">Home</button>
           </div>
         </div>
       </div>
     </div>
       
-<script>
+ <script>
   const hydrateMe = async () => {
     const user = await JSON.parse(localStorage.getItem('user'));
     document.getElementById('user-photo').src = user.photo;

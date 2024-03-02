@@ -20,3 +20,8 @@ const open = document.querySelector('.nav');
 		close.addEventListener('click', () => {
 			tl.reverse();
 		});
+
+		document.addEventListener('touchmove', function (event) {
+			event.preventDefault();
+		  }, { passive: false });
+		  
