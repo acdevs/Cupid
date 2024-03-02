@@ -281,7 +281,6 @@ const user_profile_get = (req, res) => {
 const user_signup_post = (req, res) => {
     /* req.body structure 
     {
-        "photo" : ...,
         "rollNo" : ...,
         "name" : ...,
         "gender" : ...,
@@ -310,15 +309,8 @@ const user_signup_post = (req, res) => {
                 res.status(400).json({ message: "User already exists"})
                 return
             }
-            if(!req.file) {
-                res.status(400).json({ message: "Please upload a photo"})
-                return
-            }
-            const filename = req.file.filename;
-            const imageUrl = `${req.protocol}://${req.get('host')}/usercontent/${filename}`;
             const hashedPassword = bcrypt.hashSync(req.body.password, 10)
             const myUser = new User({
-                photo: imageUrl,
                 rollNo,
                 name : req.body.name.toLowerCase(),
                 gender : req.body.gender.toUpperCase(),

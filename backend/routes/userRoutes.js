@@ -19,6 +19,6 @@ router.get("/match", requireAuth, user_match_get)
 
 router.post("/signin", user_signin_post)
 
-router.post("/signup", handleUploadPhoto, user_signup_post)
+router.post("/signup", user_signup_post)
 
 module.exports = router

@@ -1,173 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="icon" href="favicon/heart.png" type="image/x-icon">
-<link rel="stylesheet" href="css\signup.css">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="icon" href="favicon/heart.png" type="image/x-icon">
+  <link rel="stylesheet" href="css\signup.css">
+
 </head>
+
 <body>
-    <section>
-  
-        <div class="box">
-          
-          <div class="square" style="--i:0;"></div>
-          <div class="square" style="--i:1;"></div>
-          <div class="square" style="--i:2;"></div>
-          <div class="square" style="--i:3;"></div>
-          <div class="square" style="--i:4;"></div>
-          <div class="square" style="--i:5;"></div>
-          
-         <div class="container"> 
-          <div class="form"> 
-           <center><h2>Sign Up</h2></center> 
-            <form enctype="multipart/form-data">
-              <div class="inputBx">
-                <input type="file" name="photo" id="photo" class="inputfile" />
-                <label for="photo" class="file-label">Pic</label>
-                <img class="preview-image"></img>
-              </div>
-              <div class="inputBx">
-                <input type="text" id="name">
-                <span>Name</span>
-                <i class="fas fa-user-circle"></i>
-              </div>
-              <div class="inputBx">
-                <input type="text" id="gender">
-                <span>Gender (M / F )</span>
-                <i class="fas fa-user-circle"></i>
-              </div>
-              <div class="inputBx">
-                <input type="text" id="rollNo">
-                <span>Roll No.</span>
-                <i class="fas fa-user-circle"></i>
-              </div>
-              <div class="inputBx">
-                <input type="email" id="email">
-                <span>NITJ Email</span>
-              </div>
-              <div class="inputBx">
-                <input type="text" id="branch">
-                <span>Branch</span>
-              </div>
-              <div class="inputBx">
-                <input type="text" id="crush">
-                <span>Crush Name</span>
-              </div>
-              <div class="inputBx">
-                <input type="text" id="crush_rollNo">
-                <span>Crush Roll No.</span>
-              </div>
-              <div class="inputBx password">
-                <input id="password-input" type="password" name="password" >
-                <span>Enter New Password</span>
-                <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
-                <i class="fas fa-key"></i>
-              </div>
-              <div class="inputBx">
-                <input type="text" id="instagram_username">
-                <span>Instagram Username</span>
-              </div>
-              <div class="inputBx">
-                <input type="text" id="snapchat_username">
-                <span>Snapchat Username</span>
-              </div>
-              <div class="error"></div>
-              <div class="inputBx">
-                <input type="submit" value="Register"> 
-              </div>
-            </form>
-            <div class="foot-notes">
-              <p>Already have an account?  <a href="signin.html">  Sign In</a></p>
-              <a href="index.html"><button class="home" type="button" >Home</button></a>
+  <section>
+
+    <div class="box">
+
+      <div class="square" style="--i:0;"></div>
+      <div class="square" style="--i:1;"></div>
+      <div class="square" style="--i:2;"></div>
+      <div class="square" style="--i:3;"></div>
+      <div class="square" style="--i:4;"></div>
+      <div class="square" style="--i:5;"></div>
+
+
+      <div class="container">
+        <div class="form">
+          <center>
+            <h2>Sign Up</h2>
+          </center>
+          <form>
+            <div class="inputBx">
+              <input type="text" id="name" name="name" >
+              <span>Name</span>
+              <i class="fas fa-user-circle"></i>
             </div>
+            <div class="inputBx">
+              <input type="text" id="gender" name="gender" >
+              <span>Gender (M / F )</span>
+            </div>
+            <div class="inputBx">
+              <input type="text" id="rollNo" name="rollNo" >
+              <span>Roll No.</span>
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="inputBx">
+              <input type="email" id="email" name="email" >
+              <span>NITJ Email</span>
+            </div>
+            <div class="inputBx">
+              <input type="text" id="branch" name="branch" >
+              <span>Branch</span>
+            </div>
+            <div class="inputBx">
+              <input type="text" id="crush" name="crush" >
+              <span>Crush's full name</span>
+            </div>
+            <div class="inputBx">
+              <input type="text" id="crush_rollNo" name="crush_rollNo" >
+              <span>Crush Roll No.</span>
+            </div>
+            <div class="inputBx password">
+              <input id="password" type="password" name="password" >
+              <span>Password</span>
+              <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+              <i class="fas fa-key"></i>
+            </div>
+            <div class="inputBx">
+              <input type="text" id="instagram_username" name="instagram_username">
+              <span>Instagram Username</span>
+            </div>
+            <div class="inputBx">
+              <input type="text" id="snapchat_username" name="snapchat_username">
+              <span>Snapchat Username</span>
+            </div>
+            <div class="error"></div>
+            <div class="inputBx">
+              <input type="submit" value="Register">
+            </div>
+          </form>
+          <div class="foot-notes">
+            <p>Already have an account? <a href="signin.html">Sign In</a></p>
+            <a href="index.html"><button class="home" type="button">Home</button></a>
           </div>
         </div>
-          
-        </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-<script>
-  function show_hide_password(target){
-    var input = document.getElementById('password-input');
-    if (input.getAttribute('type') == 'password') {
+  <script>
+    function show_hide_password(target) {
+      var input = document.getElementById('password');
+      if (input.getAttribute('type') == 'password') {
         target.classList.add('view');
         input.setAttribute('type', 'text');
-    } else {
+      } else {
         target.classList.remove('view');
         input.setAttribute('type', 'password');
-    }
-    return false;
-  }
-
-  function displayImage() {
-    const fileInput = document.getElementById('photo');
-    const previewImage = document.querySelector('.preview-image');
-
-    if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            previewImage.style.display = 'block';
-            previewImage.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    } else {
-        previewImage.style.display = none;
-        previewImage.src = '';
-    }
-  }
-
-
-  function readyUpload(){
-    const obj = {
-      "photo" : document.getElementById('photo').files[0],
-      "name": document.getElementById('name').value,
-      "rollNo" : document.getElementById('rollNo').value,
-      "email" : document.getElementById('email').value,
-      "gender" : document.getElementById('gender').value,
-      "branch" : document.getElementById('branch').value,
-      "crush" : document.getElementById('crush').value,
-      "crush_rollNo" : document.getElementById('crush_rollNo').value,
-      "password": document.getElementById('password-input').value,
-      "instagram_username": document.getElementById('instagram_username').value,
-      "snapchat_username": document.getElementById('snapchat_username').value
-    }
-
-    const formData = new FormData();
-
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        formData.append(key, obj[key]);
       }
+      return false;
     }
-    return formData;
-  }
 
-  document.querySelector('form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = await readyUpload();
-    try {
-      const response = await fetch('http://127.0.0.1:8888/users/signup', {
-        method: 'POST',
-        body: formData,
-      });
+    document.querySelector('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-      const data = await response.json();
-      if(response.status === 200){
-        localStorage.setItem('token', JSON.stringify(data.token));
-        localStorage.setItem('user', JSON.stringify(data.user));
+      const formData = {
+        "name": document.getElementById('name').value,
+        "rollNo": document.getElementById('rollNo').value,
+        "email": document.getElementById('email').value,
+        "gender": document.getElementById('gender').value,
+        "branch": document.getElementById('branch').value,
+        "crush": document.getElementById('crush').value,
+        "crush_rollNo": document.getElementById('crush_rollNo').value,
+        "password": document.getElementById('password').value,
+        "instagram_username": document.getElementById('instagram_username').value,
+        "snapchat_username": document.getElementById('snapchat_username').value
+      };
+
+      try {
+        const response = await fetch('http://127.0.0.1:8888/users/signup', {
+          method: 'POST',
+          body: JSON.stringify(formData),
+        });
+        const data = await response.json();
+        if (response.status === 200) {
+          console.log(data)
+          localStorage.setItem('token', JSON.stringify(data.token));
+          localStorage.setItem('user', JSON.stringify(data.user));
+        }
+        else {
+          document.querySelector('.error').innerHTML = `*${data.message}`;
+        }
+      } catch (error) {
+        console.error('Error:', error);
       }
-      else{
-        document.querySelector('.error').innerHTML = data.message;
-      }
-  } catch (error) {
-      console.error('Error:', error);
-  }
-  });
+    });
 
-</script>    
+  </script>
 </body>
+
 </html>
