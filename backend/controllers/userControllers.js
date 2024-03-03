@@ -279,22 +279,6 @@ const user_profile_get = (req, res) => {
 }
 
 const user_signup_post = (req, res) => {
-    /* req.body structure 
-    {
-        "rollNo" : ...,
-        "name" : ...,
-        "gender" : ...,
-        "email" : ...,
-        "password" : ...,
-        "branch" : ...,
-        "crush" : ..., [fullname of the crush, not just the first name !!!]
-        "instagram_username" : ...,
-        "facebook_username" : ...,
-        "linkedin_username" : ...,
-        "twitter_username" : ...
-    }
-    */
-
     const { rollNo } = req.body
 
     DB.findOne({ rollNo })
@@ -318,15 +302,16 @@ const user_signup_post = (req, res) => {
                 password : hashedPassword,
                 branch : req.body.branch.toUpperCase(),
                 crush : req.body.crush.toLowerCase(),
+                crush_rollNo : req.body.crush_rollNo,
                 instagram_username : req.body.instagram_username,
-                facebook_username : req.body.facebook_username,
+                snapchat_username : req.body.facebook_username,
                 linkedin_username : req.body.linkedin_username,
                 twitter_username : req.body.twitter_username
             })
             myUser.save()
             .then((user) => {
                 const token = jwt.sign({id: user._id}, process.env.JWT_SECRET)
-                res.status(201).json({
+                res.status(200).json({
                     user,
                     token
                 })
@@ -367,6 +352,30 @@ const user_signin_post = (req, res) => {
     })
 }
 
+const user_upload_photo_patch = (req, res) => {
+    if(!req.userID) {
+        res.status(400).json({ message: "Bad Credentials" })
+        return
+    }
+    if(!req.file) {
+        res.status(400).json({ message: "Please upload a photo"})
+        return
+    }
+    const filename = req.file.filename;
+    const imageUrl = `${req.protocol}://${req.get('host')}/usercontent/${filename}`;
+    
+    User.findByIdAndUpdate(req.userID, { $set: { photo: imageUrl }})
+    .then((user) => {
+         User.findOne({ _id: req.userID})
+        .then((user) => {
+            res.status(200).json(user)
+        })
+    })
+    .catch((err) => {
+        res.status(404).json({ message: "404 Not Found"})
+    })
+}
+
 // cron job ------------------------------------------------
 
 const updateUserPopularity = async (user) => {
@@ -396,5 +405,6 @@ module.exports = {
     user_signup_post,
     user_profile_get,
     user_match_get,
-    update_all_users : updateAllUsers
+    update_all_users : updateAllUsers,
+    user_upload_photo_patch
 }

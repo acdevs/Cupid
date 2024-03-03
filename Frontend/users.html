@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Page</title>
+    <link rel="icon" href="favicon/heart.png" type="image/x-icon">
+    <link rel="stylesheet" href="css\users.css">
+</head>
+<body>
+    <div class="wrapper">
+      <div class="profile-card js-profile-card">
+        <div class="profile-card__img">
+          <img id="user-photo">
+          <div class="upload-btn">
+            <form enctype="multipart/form-data">
+              <input type="file" id="photo" name="photo" accept="image/*" class="inputfile">
+              <label for="photo">+</label>
+            </form>
+          </div>
+        </div>
+  
+        <div class="profile-card__cnt js-profile-cnt">
+          <div class="profile-card__name">
+            <strong><span id="user-name"></span></strong>
+          </div>
+          <div class="profile-card__txt">Roll No.
+            <span id="user-rollNo"></span>
+          </div>
+          <div class="profile-card__txt">Email.
+            <span id="user-email"></span>
+          </div>
+          <div class="profile-card__txt"><i>of </i>
+            <span id="user-branch"></span>
+          </div>
+
+          <div class="profile-card__txt user-instagram-txt">Instagram 
+            @<span id="user-instagram"></span>
+          </div>
+          <div class="profile-card__txt user-snapchat-txt">Snapchat 
+            @<span id="user-snapchat"></span>
+          </div>
+          
+          <div class="profile-card-off no-match-info">
+          </div>
+
+          <div class="profile-card-inf match-info">
+            <div class="crush-profile-card__img">
+              <img id="crush-photo">
+            </div>
+            <div class="crush-details">
+              <div class="profile-card__name">
+                <strong><span id="matched-name"></span></strong>
+              </div>
+              <div class="profile-card__txt">Roll No.
+                <span id="matched-rollNo"></span>
+              </div>
+              <div class="profile-card__txt">Email.
+                <span id="matched-email"></span>
+              </div>
+              <div class="profile-card__txt"><i>of </i>
+                <span id="matched-branch"></span>
+              </div>
+              <div class="profile-card__txt match-instagram-txt">Instagram
+                @<span id="matched-instagram"></span>
+              </div>
+              <div class="profile-card__txt match-snapchat-txt">Snapchat
+                @<span id="matched-snapchat"></span>
+              </div>
+            </div>
+          </div>
+    
+          <div class="profile-card-ctr">
+            <!-- <button class="profile-card__button button--blue js-message-btn">Connect</button> -->
+            <button class="profile-card__button button--orange" onclick="redirectToPage()">Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+ <script>
+    document.getElementById('photo').addEventListener('change', (e) => {
+    e.preventDefault();
+    const previewImage = document.getElementById('user-photo');
+    const fileInput = document.getElementById('photo');
+    if (fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        previewImage.style.display = 'block';
+        previewImage.src = e.target.result;
+        const formData = new FormData();
+        formData.append('photo', file);
+        fetch("http://127.0.0.1:8888/users/upload_photo", {
+          method: "POST",
+          headers: {
+            "Authorization": JSON.parse(localStorage.getItem('token'))
+          },
+          body: formData
+        })
+      };
+      reader.readAsDataURL(file);
+    } else {
+      previewImage.style.display = 'none';
+      previewImage.src = '';
+    }
+  });
+
+  function redirectToPage(){
+    window.location = "index.html";
+  }
+
+  const toTitleCase = (str) => {
+    if(!str) return;
+    return str.replace(
+      /\w\S*/g,
+      function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }
+    );
+  }
+
+  const hydrateMe = () => {
+    fetch('http://127.0.0.1:8888/users',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': JSON.parse(localStorage.getItem('token'))
+      }
+    })
+    .then(async (res) => {
+      if (res.status === 200) {
+        const user = await res.json();
+        populateUser(user);
+      }
+    })
+  }
+
+  const populateUser = (user) => {
+    if(user.photo) document.getElementById('user-photo').src = user.photo;
+    document.getElementById('user-name').innerText = toTitleCase(user.name);
+    document.getElementById('user-rollNo').innerText = user.rollNo;
+    document.getElementById('user-branch').innerText = user.branch.toUpperCase();
+    document.getElementById('user-email').innerText = user.email;
+    if(user.instagram){
+      document.getElementById('user-instagram').innerText = user.instagram;
+    }else{
+      document.querySelector('.user-instagram-txt').style.display = 'none';
+    }
+    if(user.snapchat){
+      document.getElementById('user-snapchat').innerText = user.snapchat;
+    }else{
+      document.querySelector('.user-snapchat-txt').style.display = 'none';
+    }
+  }
+
+  const getCrush = async () => {
+    fetch('http://127.0.0.1:8888/users/match',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': JSON.parse(localStorage.getItem('token'))
+      }
+    })
+    .then(async (res) => {
+      if (res.status === 200) {
+        const match = await res.json();
+        document.querySelector('.match-info').style.display = 'flex';
+        if(match.photo) document.getElementById('matched-photo').src = match.photo;
+        document.getElementById('matched-name').innerText = toTitleCase(match.name);
+        document.getElementById('matched-rollNo').innerText = match.rollNo;
+        document.getElementById('matched-branch').innerText = match.branch.toUpperCase();
+        document.getElementById('matched-email').innerText = match.email;
+        if(match.instagram){
+          document.getElementById('matched-instagram').innerText = match.instagram;
+        }else{
+          document.querySelector('.match-instagram-txt').style.display = 'none';
+        }
+        if(match.snapchat){
+          document.getElementById('matched-snapchat').innerText = match.snapchat;
+        }else{
+          document.querySelector('.match-snapchat-txt').style.display = 'none';
+        }
+      }
+      else{
+        document.querySelector('.no-match-info').style.display = 'flex';
+        document.querySelector('.no-match-info').innerText = '*Match Making not started Yet';
+      }
+    })
+    .catch((err) => {
+      document.querySelector('.match-info').innerText = err.message;
+    });
+  }
+
+  hydrateMe();
+  getCrush();
+</script>
+</body>
+</html>

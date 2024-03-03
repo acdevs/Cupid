@@ -51,7 +51,7 @@ section {
     backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
+    border-radius: 18px;
     animation: square 10s linear infinite;
     animation-delay: calc(-1s * var(--i));
   }
@@ -117,14 +117,14 @@ section {
 .container {
   position: relative;
   padding: 30px;
-  width: 30vw;
+  width: 360px;
   min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
-  border-radius: 10px;
+  border-radius: 45px;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
 }
 
@@ -135,7 +135,7 @@ section {
   right: 5px;
   bottom: 5px;
   left: 5px;
-  border-radius: 5px;
+  border-radius: 40px;
   pointer-events: none;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 2%);
 }

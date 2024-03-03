@@ -10,9 +10,6 @@
   display: none;
 }
 
-body{
-}
-
 .fas {
   width: 32px;
 }
@@ -53,7 +50,7 @@ section {
     backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
+    border-radius: 18px;
     animation: square 10s linear infinite;
     animation-delay: calc(-1s * var(--i));
   }
@@ -121,14 +118,14 @@ section {
 .container {
   position: relative;
   padding: 30px;
-  width: 35vw;
+  width: 380px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
-  border-radius: 8px;
+  border-radius: 45px;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
   margin: 5vh 0;
 }
@@ -140,7 +137,7 @@ section {
   right: 5px;
   bottom: 5px;
   left: 5px;
-  border-radius: 5px;
+  border-radius: 40px;
   pointer-events: none;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 2%);
 }
@@ -177,37 +174,6 @@ input {
   font-size: 16px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
-
-.inputfile{
-  width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-  margin: auto;
-  border: none;
-  background: none;
-  box-shadow: none;
-}
-.inputfile + label {
-  width: 100px;
-  height: 100px;
-  padding: 8px 16px;
-  border-radius: 99px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.2);
-  font-size: 16px;
-  font-weight: 700;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-.inputfile + label {
-	cursor: pointer;
-}
-
 
 .password-control {
   position: absolute;

@@ -24,12 +24,12 @@
             <center><h2>Login</h2></center> 
             <form method="post">
               <div class="inputBx">
-                <input type="text" required="required" name="rollNo" class="input-field">
+                <input type="text" required="required" name="rollNo" class="input-field" >
                 <span>Roll No.</span>
                 <i class="fas fa-user-circle"></i>
               </div>
               <div class="inputBx password">
-                <input id="password-input" type="password" name="password" required="required" class="input-field">
+                <input id="password-input" type="password" name="password" required="required" class="input-field" >
                 <span>Password</span>
                 <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
                 <i class="fas fa-key"></i>
@@ -67,8 +67,7 @@
           rollNo: Number(this.rollNo.value),
           password: this.password.value
         };
-
-        console.log(formData);
+        
         fetch('http://127.0.0.1:8888/users/signin', {
             method: 'POST',
             headers: {
@@ -77,16 +76,16 @@
             body: JSON.stringify(formData)
         })
         .then(async function(res) {
+          data = await res.json();
           if (res.status === 200) {
-            data = await res.json();
             localStorage.setItem('token', JSON.stringify(data.token));
             localStorage.setItem('user', JSON.stringify(data.user));
-            window.location.href = 'my_account.html';
+            window.location.href = 'users.html';
           } else {
+            if(data.message == undefined) {
+              data.message = '*Something went wrong.';
+            }
             document.querySelector('.error').textContent = '*Invalid Roll No. or Password';
-            document.querySelectorAll('.input-field').forEach(input => {
-              input.value = '';
-            });
           }
         })
     });

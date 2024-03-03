@@ -28,54 +28,54 @@
           <center>
             <h2>Sign Up</h2>
           </center>
-          <form>
+          <form method="post">
             <div class="inputBx">
-              <input type="text" id="name" name="name" >
+              <input type="text" id="name" name="name" required class="input-field" >
               <span>Name</span>
               <i class="fas fa-user-circle"></i>
             </div>
             <div class="inputBx">
-              <input type="text" id="gender" name="gender" >
+              <input type="text" id="gender" name="gender" required class="input-field" >
               <span>Gender (M / F )</span>
             </div>
             <div class="inputBx">
-              <input type="text" id="rollNo" name="rollNo" >
+              <input type="text" id="rollNo" name="rollNo" required class="input-field" >
               <span>Roll No.</span>
               <i class="fas fa-user-circle"></i>
             </div>
             <div class="inputBx">
-              <input type="email" id="email" name="email" >
+              <input type="email" id="email" name="email" required class="input-field" >
               <span>NITJ Email</span>
             </div>
             <div class="inputBx">
-              <input type="text" id="branch" name="branch" >
+              <input type="text" id="branch" name="branch" required class="input-field" >
               <span>Branch</span>
             </div>
             <div class="inputBx">
-              <input type="text" id="crush" name="crush" >
+              <input type="text" id="crush" name="crush" required class="input-field" >
               <span>Crush's full name</span>
             </div>
             <div class="inputBx">
-              <input type="text" id="crush_rollNo" name="crush_rollNo" >
+              <input type="text" id="crush_rollNo" name="crush_rollNo" required class="input-field" >
               <span>Crush Roll No.</span>
             </div>
             <div class="inputBx password">
-              <input id="password" type="password" name="password" >
+              <input id="password" type="password" name="password" required class="input-field" >
               <span>Password</span>
               <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
               <i class="fas fa-key"></i>
             </div>
             <div class="inputBx">
-              <input type="text" id="instagram_username" name="instagram_username">
+              <input type="text" id="instagram_username" name="instagram_username" class="input-field" >
               <span>Instagram Username</span>
             </div>
             <div class="inputBx">
-              <input type="text" id="snapchat_username" name="snapchat_username">
+              <input type="text" id="snapchat_username" name="snapchat_username" class="input-field" >
               <span>Snapchat Username</span>
             </div>
             <div class="error"></div>
             <div class="inputBx">
-              <input type="submit" value="Register">
+              <input type="submit" value="Sign Up">
             </div>
           </form>
           <div class="foot-notes">
@@ -116,23 +116,30 @@
         "snapchat_username": document.getElementById('snapchat_username').value
       };
 
-      try {
-        const response = await fetch('http://127.0.0.1:8888/users/signup', {
-          method: 'POST',
-          body: JSON.stringify(formData),
-        });
-        const data = await response.json();
-        if (response.status === 200) {
-          console.log(data)
+      fetch('http://127.0.0.1:8888/users/signup', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(async function(res) {
+        data = await res.json();
+        if (res.status == 200) {
           localStorage.setItem('token', JSON.stringify(data.token));
           localStorage.setItem('user', JSON.stringify(data.user));
+          document.querySelectorAll('.input-field').forEach(input => {
+            input.value = '';
+          });
+          window.location.href = 'users.html';
+          return;
+        } else {
+          if(data.message == undefined) {
+            data.message = '*Invalid credentials';
+          }
+          document.querySelector('.error').textContent = `*${data.message}`;
         }
-        else {
-          document.querySelector('.error').innerHTML = `*${data.message}`;
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      })
     });
 
   </script>
