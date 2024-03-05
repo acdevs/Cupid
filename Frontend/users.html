@@ -91,7 +91,7 @@
         previewImage.src = e.target.result;
         const formData = new FormData();
         formData.append('photo', file);
-        fetch("http://127.0.0.1:8888/users/upload_photo", {
+        fetch("http://20.193.147.51:8888/users/upload_photo", {
           method: "POST",
           headers: {
             "Authorization": JSON.parse(localStorage.getItem('token'))
@@ -121,7 +121,7 @@
   }
 
   const hydrateMe = () => {
-    fetch('http://127.0.0.1:8888/users',
+    fetch('http://20.193.147.51:8888/users',
     {
       method: 'GET',
       headers: {
@@ -156,7 +156,7 @@
   }
 
   const getCrush = async () => {
-    fetch('http://127.0.0.1:8888/users/match',
+    fetch('http://20.193.147.51:8888/users/match',
     {
       method: 'GET',
       headers: {
