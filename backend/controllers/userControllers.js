@@ -362,7 +362,7 @@ const user_upload_photo_patch = (req, res) => {
         return
     }
     const filename = req.file.filename;
-    const imageUrl = `${req.protocol}://${req.get('host')}/usercontent/${filename}`;
+    const imageUrl = `https://${req.get('host')}/usercontent/${filename}`;
     
     User.findByIdAndUpdate(req.userID, { $set: { photo: imageUrl }})
     .then((user) => {
