@@ -153,12 +153,12 @@
     document.getElementById('user-branch').innerText = user.branch.toUpperCase();
     document.getElementById('user-email').innerText = user.email;
     if(user.instagram_username){
-      document.getElementById('user-instagram').href = `https://instagram.com/${user.instagram}/`;
+      document.getElementById('user-instagram').href = `https://instagram.com/${user.instagram_username}/`;
     }else{
       document.querySelector('.user-instagram-txt').style.display = 'none';
     }
     if(user.snapchat_username){
-      document.getElementById('user-snapchat').href = `https://www.snapchat.com/add/${user.snapchat}/`;
+      document.getElementById('user-snapchat').href = `https://www.snapchat.com/add/${user.snapchat_username}/`;
     }else{
       document.querySelector('.user-snapchat-txt').style.display = 'none';
     }
@@ -183,12 +183,12 @@
         document.getElementById('matched-branch').innerText = match.branch.toUpperCase();
         document.getElementById('matched-email').innerText = match.email;
         if(match.instagram_username){
-          document.getElementById('matched-instagram').href = `https://instagram.com/${user.instagram}/`;
+          document.getElementById('matched-instagram').href = `https://instagram.com/${user.instagram_username}/`;
         }else{
           document.querySelector('.match-instagram-txt').style.display = 'none';
         }
         if(match.snapchat_username){
-          document.getElementById('matched-snapchat').href = `https://www.snapchat.com/add/${user.snapchat}/`;
+          document.getElementById('matched-snapchat').href = `https://www.snapchat.com/add/${user.snapchat_username}/`;
         }else{
           document.querySelector('.match-snapchat-txt').style.display = 'none';
         }
