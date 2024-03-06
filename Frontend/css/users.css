@@ -122,10 +122,6 @@ a{
   background-position: center;
 }
 
-.crush-details{
-  margin-top: 60px;
-}
-
 
 @media screen and (max-width: 600px) {
   .profile-card__img {
