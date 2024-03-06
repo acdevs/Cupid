@@ -147,7 +147,8 @@ a{
 
 }
 
-.profile-card__img img {
+.profile-card__img img,
+.crush-profile-card__img img {
   display: block;
   width: 100%;
   height: 100%;
@@ -423,4 +424,3 @@ a{
     transform: rotate(360deg);
   }
 }
-
