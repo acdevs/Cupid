@@ -214,7 +214,7 @@ a{
 .profile-card__txt {
   font-size: 18px;
   font-weight: 500;
-  color: #324e63;
+  color: #272727;
   margin-bottom: 15px;
 }
 
@@ -257,6 +257,7 @@ a{
   min-height: 40vh;
   align-items: center;
   margin-top: 25px;
+  padding: 0 20px;
   background: rgba( 255, 255, 255, 0.15 );
   border-radius: 40px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
@@ -419,4 +420,24 @@ a{
   100% {
     transform: rotate(360deg);
   }
+}
+
+.social-btns{
+  display: inline-flex;
+  margin: 0px;
+}
+
+.social-btns > a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #000000c6;
+}
+.social-btns > a:hover{
+  background-color: #ffffff1f;
 }

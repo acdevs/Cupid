@@ -6,6 +6,8 @@
     <title>My Page</title>
     <link rel="icon" href="favicon/heart.png" type="image/x-icon">
     <link rel="stylesheet" href="css\users.css">
+    <link href="https://acdevs.github.io/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="https://acdevs.github.io/fontawesome/css/all.css" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
@@ -35,11 +37,11 @@
             <span id="user-branch"></span>
           </div>
 
-          <div class="profile-card__txt user-instagram-txt">Instagram 
-            @<span id="user-instagram"></span>
+          <div class="profile-card__txt user-instagram-txt social-btns">
+            <a id="user-instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
           </div>
-          <div class="profile-card__txt user-snapchat-txt">Snapchat 
-            @<span id="user-snapchat"></span>
+          <div class="profile-card__txt user-snapchat-txt social-btns"> 
+            <a id="user-snapchat" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
           </div>
           
           <div class="profile-card-off no-match-info">
@@ -62,17 +64,16 @@
               <div class="profile-card__txt"><i>of </i>
                 <span id="matched-branch"></span>
               </div>
-              <div class="profile-card__txt match-instagram-txt">Instagram
-                @<span id="matched-instagram"></span>
+              <div class="profile-card__txt user-instagram-txt social-btns">
+                <a id="matched-instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
               </div>
-              <div class="profile-card__txt match-snapchat-txt">Snapchat
-                @<span id="matched-snapchat"></span>
+              <div class="profile-card__txt user-snapchat-txt social-btns"> 
+                <a id="matched-snapchat" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
               </div>
             </div>
           </div>
     
           <div class="profile-card-ctr">
-            <!-- <button class="profile-card__button button--blue js-message-btn">Connect</button> -->
             <button class="profile-card__button button--orange" onclick="redirectToPage()">Home</button>
           </div>
         </div>
@@ -152,12 +153,12 @@
     document.getElementById('user-branch').innerText = user.branch.toUpperCase();
     document.getElementById('user-email').innerText = user.email;
     if(user.instagram){
-      document.getElementById('user-instagram').innerText = user.instagram;
+      document.getElementById('user-instagram').href = `https://instagram.com/${user.instagram}/`;
     }else{
       document.querySelector('.user-instagram-txt').style.display = 'none';
     }
     if(user.snapchat){
-      document.getElementById('user-snapchat').innerText = user.snapchat;
+      document.getElementById('user-snapchat').href = `https://www.snapchat.com/add/${user.snapchat}/`;
     }else{
       document.querySelector('.user-snapchat-txt').style.display = 'none';
     }
@@ -182,12 +183,12 @@
         document.getElementById('matched-branch').innerText = match.branch.toUpperCase();
         document.getElementById('matched-email').innerText = match.email;
         if(match.instagram){
-          document.getElementById('matched-instagram').innerText = match.instagram;
+          document.getElementById('matched-instagram').href = `https://instagram.com/${user.instagram}/`;
         }else{
           document.querySelector('.match-instagram-txt').style.display = 'none';
         }
         if(match.snapchat){
-          document.getElementById('matched-snapchat').innerText = match.snapchat;
+          document.getElementById('matched-snapchat').href = `https://www.snapchat.com/add/${user.snapchat}/`;
         }else{
           document.querySelector('.match-snapchat-txt').style.display = 'none';
         }
