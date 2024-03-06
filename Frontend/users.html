@@ -94,7 +94,7 @@
         previewImage.src = e.target.result;
         const formData = new FormData();
         formData.append('photo', file);
-        fetch("https://2cae-20-193-147-51.ngrok-free.app/users/upload_photo", {
+        fetch("https://1b63-20-193-147-51.ngrok-free.app/users/upload_photo", {
           method: "POST",
           headers: {
             'ngrok-skip-browser-warning': 'true',
@@ -128,7 +128,7 @@
   }
 
   const hydrateMe = () => {
-    fetch('https://2cae-20-193-147-51.ngrok-free.app/users',
+    fetch('https://1b63-20-193-147-51.ngrok-free.app/users',
     {
       method: 'GET',
       headers: {
@@ -141,12 +141,12 @@
       if (res.status === 200) {
         const user = await res.json();
         populateUser(user);
+        if(user.photo) fetchAndDisplayImage(user.photo, 'user-photo');
       }
     })
   }
 
   const populateUser = (user) => {
-    if(user.photo) document.getElementById('user-photo').src = user.photo;
     document.getElementById('user-name').innerText = toTitleCase(user.name);
     document.getElementById('user-rollNo').innerText = user.rollNo;
     document.getElementById('user-branch').innerText = user.branch.toUpperCase();
@@ -164,7 +164,7 @@
   }
 
   const getCrush = async () => {
-    fetch('https://2cae-20-193-147-51.ngrok-free.app/users/match',
+    fetch('https://1b63-20-193-147-51.ngrok-free.app/users/match',
     {
       method: 'GET',
       headers: {
@@ -192,6 +192,7 @@
         }else{
           document.querySelector('.match-snapchat-txt').style.display = 'none';
         }
+        if(match.photo) fetchAndDisplayImage(match.photo, 'crush-photo');
       }
       else{
         document.querySelector('.no-match-info').style.display = 'flex';
@@ -201,6 +202,24 @@
     .catch((err) => {
       document.querySelector('.match-info').innerText = err.message;
     });
+  }
+
+  function fetchAndDisplayImage(url, imageElementId) {
+    fetch(url, { method: 'GET', headers: { 'ngrok-skip-browser-warning': 'true' } })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.blob();
+      })
+      .then(blob => {
+        const imageUrl = URL.createObjectURL(blob);
+        const imgElement = document.getElementById(imageElementId);
+        imgElement.src = imageUrl;
+      })
+      .catch(error => {
+        console.error('There was a problem loading the image');
+      });
   }
 
   hydrateMe();
