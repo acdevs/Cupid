@@ -92,7 +92,7 @@
         previewImage.src = e.target.result;
         const formData = new FormData();
         formData.append('photo', file);
-        fetch("http://20.193.147.51:8888/users/upload_photo", {
+        fetch("https://b883-20-193-147-51.ngrok-free.app/users/upload_photo", {
           method: "POST",
           headers: {
             "Authorization": JSON.parse(localStorage.getItem('token'))
@@ -122,7 +122,7 @@
   }
 
   const hydrateMe = () => {
-    fetch('http://20.193.147.51:8888/users',
+    fetch('https://b883-20-193-147-51.ngrok-free.app/users',
     {
       method: 'GET',
       headers: {
@@ -157,7 +157,7 @@
   }
 
   const getCrush = async () => {
-    fetch('http://20.193.147.51:8888/users/match',
+    fetch('https://b883-20-193-147-51.ngrok-free.app/users/match',
     {
       method: 'GET',
       headers: {
