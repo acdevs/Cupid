@@ -85,11 +85,13 @@ const user_match_get = async (req, res) => {
                 // case 1.2: no one has a crush on the user
                 // select a random user that hasn't been matched yet
                 const users = await User.find({ gender: getOppositeGender(user.gender) });
-                // iterate through the users and get those that haven't been matched yet by comparing their ids with the ids of the users in the matches collection
-                const matchables = users.filter( async (user) => {
-                    const match = await Match.findOne({ $or : [{ user1: user._id}, { user2: user._id}]});
-                    return !match;
-                });
+                // Iterate through the users and get those that haven't been matched yet by comparing their ids with the ids of the users in the matches collection
+                const usersWithoutMatch = await Promise.all(users.map(async (user) => {
+                    const match = await Match.findOne({ $or: [{ user1: user._id }, { user2: user._id }] });
+                    return !match ? user : null;
+                }));
+
+                const matchables = usersWithoutMatch.filter(user => user !== null);
 
                 if(matchables.length === 0) {
                     res.status(400).json({ message: "No match found."})
@@ -124,7 +126,7 @@ const user_match_get = async (req, res) => {
 
             // case 2.1: crush has a crush on the user
 
-            const perfectMatch = crushes.find((crush) => compareNames(crush.name, user.crush) >= 2);
+            const perfectMatch = crushes.find((crush) => compareNames(crush.name, user.crush) >= 1);
             if (perfectMatch) {
                 const match = new Match({
                     user1: user._id,
@@ -188,10 +190,18 @@ const user_match_get = async (req, res) => {
 
             // match with random user
             const users = await User.find({ gender: getOppositeGender(user.gender) });
-            const matchables = users.filter( async (user) => {
-                const match = await Match.findOne({ $or : [{ user1: user._id}, { user2: user._id}]});
-                return !match;
-            });
+            // Iterate through the users and get those that haven't been matched yet by comparing their ids with the ids of the users in the matches collection
+            const usersWithoutMatch = await Promise.all(users.map(async (user) => {
+                const match = await Match.findOne({ $or: [{ user1: user._id }, { user2: user._id }] });
+                return !match ? user : null;
+            }));
+
+            const matchables = usersWithoutMatch.filter(user => user !== null);
+
+            if(matchables.length === 0) {
+                res.status(400).json({ message: "No match found."})
+                return
+            }
 
             const randomIndex = Math.floor(Math.random() * matchables.length);
             const match = new Match({
@@ -238,10 +248,18 @@ const user_match_get = async (req, res) => {
             }
 
             const users = await User.find({ gender: getOppositeGender(user.gender) });
-            const matchables = users.filter( async (user) => {
-                const match = await Match.findOne({ $or : [{ user1: user._id}, { user2: user._id}]});
-                return !match;
-            });
+            // Iterate through the users and get those that haven't been matched yet by comparing their ids with the ids of the users in the matches collection
+            const usersWithoutMatch = await Promise.all(users.map(async (user) => {
+                const match = await Match.findOne({ $or: [{ user1: user._id }, { user2: user._id }] });
+                return !match ? user : null;
+            }));
+
+            const matchables = usersWithoutMatch.filter(user => user !== null);
+
+            if(matchables.length === 0) {
+                res.status(400).json({ message: "No match found."})
+                return
+            }
 
             const randomIndex = Math.floor(Math.random() * matchables.length);
             const match = new Match({
