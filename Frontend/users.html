@@ -94,7 +94,7 @@
         previewImage.src = e.target.result;
         const formData = new FormData();
         formData.append('photo', file);
-        fetch("https://f2a5-20-193-147-51.ngrok-free.app/users/upload_photo", {
+        fetch("https://2cae-20-193-147-51.ngrok-free.app/users/upload_photo", {
           method: "POST",
           headers: {
             'ngrok-skip-browser-warning': 'true',
@@ -128,7 +128,7 @@
   }
 
   const hydrateMe = () => {
-    fetch('https://f2a5-20-193-147-51.ngrok-free.app/users',
+    fetch('https://2cae-20-193-147-51.ngrok-free.app/users',
     {
       method: 'GET',
       headers: {
@@ -164,7 +164,7 @@
   }
 
   const getCrush = async () => {
-    fetch('https://f2a5-20-193-147-51.ngrok-free.app/users/match',
+    fetch('https://2cae-20-193-147-51.ngrok-free.app/users/match',
     {
       method: 'GET',
       headers: {
