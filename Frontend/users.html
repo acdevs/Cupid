@@ -18,6 +18,7 @@
               <label for="photo">+</label>
             </form>
           </div>
+          <div class="upload-loader"></div>
         </div>
   
         <div class="profile-card__cnt js-profile-cnt">
@@ -83,10 +84,12 @@
     e.preventDefault();
     const previewImage = document.getElementById('user-photo');
     const fileInput = document.getElementById('photo');
+    const loader = document.querySelector('.upload-loader');
     if (fileInput.files.length > 0) {
       const file = fileInput.files[0];
       const reader = new FileReader();
       reader.onload = function (e) {
+        loader.classList.add('upload-loader-active');
         previewImage.style.display = 'block';
         previewImage.src = e.target.result;
         const formData = new FormData();
@@ -98,6 +101,9 @@
             "Authorization": JSON.parse(localStorage.getItem('token'))
           },
           body: formData
+        })
+        .then((res) => {
+            loader.classList.remove('upload-loader-active')
         })
       };
       reader.readAsDataURL(file);

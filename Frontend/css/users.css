@@ -393,5 +393,34 @@ a{
   color: #142029;
 }
 
+.upload-loader{
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin-left: calc(50% - 10px);
+  margin-top: calc(50% - 10px);
+  border-radius: 50%;
+  border: 2.5px solid #f6f6f6;
+  border-top: 2.5px solid transparent;
+  z-index: 5;
+  justify-content: center;
+  align-items: center;
+  animation: loader 1s linear infinite;
+}
 
+.upload-loader-active{
+  display: flex;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
