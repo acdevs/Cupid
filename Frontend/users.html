@@ -91,9 +91,10 @@
         previewImage.src = e.target.result;
         const formData = new FormData();
         formData.append('photo', file);
-        fetch("https://b883-20-193-147-51.ngrok-free.app/users/upload_photo", {
+        fetch("https://2598-20-193-147-51.ngrok-free.app/users/upload_photo", {
           method: "POST",
           headers: {
+            'ngrok-skip-browser-warning': 'true',
             "Authorization": JSON.parse(localStorage.getItem('token'))
           },
           body: formData
@@ -121,10 +122,11 @@
   }
 
   const hydrateMe = () => {
-    fetch('https://b883-20-193-147-51.ngrok-free.app/users',
+    fetch('https://2598-20-193-147-51.ngrok-free.app/users',
     {
       method: 'GET',
       headers: {
+        'ngrok-skip-browser-warning': 'true',
         'Content-Type': 'application/json',
         'Authorization': JSON.parse(localStorage.getItem('token'))
       }
@@ -156,11 +158,12 @@
   }
 
   const getCrush = async () => {
-    fetch('https://b883-20-193-147-51.ngrok-free.app/users/match',
+    fetch('https://2598-20-193-147-51.ngrok-free.app/users/match',
     {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true',
         'Authorization': JSON.parse(localStorage.getItem('token'))
       }
     })
