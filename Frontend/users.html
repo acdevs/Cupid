@@ -142,7 +142,10 @@
       if (res.status === 200) {
         const user = await res.json();
         populateUser(user);
-        if(user.photo) fetchAndDisplayImage(user.photo, 'user-photo');
+        if(user.photo) {
+          fetchAndDisplayImage(user.photo, 'user-photo');
+          document.querySelector('.upload-btn').style.display = 'none';
+        }
       }
     })
   }
