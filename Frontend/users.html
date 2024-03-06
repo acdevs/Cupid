@@ -177,7 +177,6 @@
       if (res.status === 200) {
         const match = await res.json();
         document.querySelector('.match-info').style.display = 'flex';
-        if(match.photo) document.getElementById('matched-photo').src = match.photo;
         document.getElementById('matched-name').innerText = toTitleCase(match.name);
         document.getElementById('matched-rollNo').innerText = match.rollNo;
         document.getElementById('matched-branch').innerText = match.branch.toUpperCase();
