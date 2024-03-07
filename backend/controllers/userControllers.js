@@ -322,7 +322,7 @@ const user_signup_post = (req, res) => {
                 crush : req.body.crush.toLowerCase(),
                 crush_rollNo : req.body.crush_rollNo,
                 instagram_username : req.body.instagram_username,
-                snapchat_username : req.body.facebook_username,
+                snapchat_username : req.body.snapchat_username,
                 linkedin_username : req.body.linkedin_username,
                 twitter_username : req.body.twitter_username
             })

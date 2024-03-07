@@ -36,12 +36,13 @@
           <div class="profile-card__txt"><i>of </i>
             <span id="user-branch"></span>
           </div>
-
           <div class="profile-card__txt user-instagram-txt social-btns">
             <a id="user-instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
           </div>
           <div class="profile-card__txt user-snapchat-txt social-btns"> 
             <a id="user-snapchat" target="_blank"><i class="fa-brands fa-snapchat"></i></a>
+          </div>
+          <div class="profile-card__txt user-popularity-txt" id="user-popularity">
           </div>
           
           <div class="profile-card-off no-match-info">
@@ -164,6 +165,12 @@
       document.getElementById('user-snapchat').href = `https://www.snapchat.com/add/${user.snapchat_username}/`;
     }else{
       document.querySelector('.user-snapchat-txt').style.display = 'none';
+    }
+    if(user.popularity > 0){
+      let text = (user.popularity != 1) ? `You appeared as crush ${user.popularity} times.` : `You appeared as someone's crush`;
+      document.getElementById('user-popularity').innerHTML = text;
+    }else{
+      document.querySelector('.user-popularity-txt').style.display = 'none';
     }
   }
 
