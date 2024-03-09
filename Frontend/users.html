@@ -96,7 +96,7 @@
         previewImage.src = e.target.result;
         const formData = new FormData();
         formData.append('photo', file);
-        fetch("https://de75-20-193-147-51.ngrok-free.app/users/upload_photo", {
+        fetch("https://a605-20-193-147-51.ngrok-free.app/users/upload_photo", {
           method: "POST",
           headers: {
             'ngrok-skip-browser-warning': 'true',
@@ -130,7 +130,7 @@
   }
 
   const hydrateMe = () => {
-    fetch('https://de75-20-193-147-51.ngrok-free.app/users',
+    fetch('https://a605-20-193-147-51.ngrok-free.app/users',
     {
       method: 'GET',
       headers: {
@@ -175,7 +175,7 @@
   }
 
   const getCrush = async () => {
-    fetch('https://de75-20-193-147-51.ngrok-free.app/users/match',
+    fetch('https://a605-20-193-147-51.ngrok-free.app/users/match',
     {
       method: 'GET',
       headers: {
@@ -216,7 +216,7 @@
   }
 
   function fetchAndDisplayImage(imageName, imageElementId) {
-    fetch(`https://de75-20-193-147-51.ngrok-free.app/usercontent/${imageName}`, { method: 'GET', headers: { 'ngrok-skip-browser-warning': 'true' } })
+    fetch(`https://a605-20-193-147-51.ngrok-free.app/usercontent/${imageName}`, { method: 'GET', headers: { 'ngrok-skip-browser-warning': 'true' } })
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

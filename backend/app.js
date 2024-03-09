@@ -17,7 +17,7 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
         console.log('Connected & Server is running on ' + process.env.PORT + '...');
     })
 
-    cron.schedule('0 * * * *', () => {
+    cron.schedule('*/1 * * * *', () => {
         axios.patch('http://127.0.0.1:8888/users/match_popularity')
             .then(res => {
                 console.log(res.data.message);

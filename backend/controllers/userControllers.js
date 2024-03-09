@@ -400,7 +400,7 @@ const updateUserPopularity = async (user) => {
     const firstName = user.name.split(" ")[0];
     const lastName = user.name.split(" ")[1] || "";
     const regexName = new RegExp(`^${firstName}\\b.*${lastName}\\b`, 'i');
-    const matches = await User.find({ crush: { $regex: regexName } });
+    const matches = await User.find({ gender : getOppositeGender(user.gender), crush: { $regex: regexName } });
     return matches.length;
 };
 
@@ -411,8 +411,31 @@ const updateAllUsers = async (req, res) => {
             const popularity = await updateUserPopularity(user);
             return User.findByIdAndUpdate(user._id, { $set: { popularity } });
         });
+
+        /* ------------------ matching ------------------ */
+
+        // match users whose crush has a crush on them
+        const matches = await User.find();
+        const matchPromises = matches.map(async (user) => {
+            const alreadyMatched = await Match.find({ $or : [{ user1: user._id}, { user2: user._id}]})
+            if(alreadyMatched.length > 0) {
+                return;
+            }
+            const firstName = user.name.split(" ")[0];
+            const lastName = user.name.split(" ")[1] || "";
+            const regexName = new RegExp(`^${firstName}\\b.*${lastName}\\b`, 'i');
+            const matched = await User.findOne({ gender : getOppositeGender(user.gender), crush: { $regex: regexName } });
+            if (matched && ( user.crush != "" || user.crush != " " || user.crush != null)){
+                const match = new Match({
+                    user1: user._id,
+                    user2: matched._id
+                });
+                return match.save();
+            }
+        });
         await Promise.all(updatePromises);
-        res.status(200).json({ message: 'Popularity updated successfully.' });
+        await Promise.all(matchPromises);
+        res.status(200).json({ message: 'users updated successfully.' });
     } catch (error) {
         res.status(500).json({ message: 'Internal server error.' });
     }
